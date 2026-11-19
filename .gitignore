@@ -1,0 +1,32 @@
+# Ferramentas locais (instaladas no projeto, não versionar)
+android-sdk/
+gradle-8.5/
+.gradle/
+.kotlin/
+
+# Builds
+build/
+app/build/
+*.apk
+*.aab
+
+# Configuração local / segredos
+local.properties
+*.keystore
+*.jks
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Capturas e testes temporários
+*.pcap
+*.mkv
+*.ts
+
+# Capturas de tela com imagens das câmeras (privado, não publicar)
+/blackview_screenshot.png
+/fullscreen.png
+/mosaic_back.png
+/screenshots/

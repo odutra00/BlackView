@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tileRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tile_selector"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:clipToOutline="true"
+    android:clipChildren="true"
+    android:padding="3dp">
+
+    <!-- Video Render Container -->
+    <org.videolan.libvlc.util.VLCVideoLayout
+        android:id="@+id/videoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <!-- Placeholder background when not playing -->
+    <View
+        android:id="@+id/placeholderBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_background" />
+
+    <!-- Top Scrim -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_gravity="top"
+        android:background="#B3000000" />
+
+    <!-- Header Overlay: Name and Status Badge in a clean single line -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvCameraName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="Câmera 1" />
+
+        <!-- DVR: gravação contínua ativa -->
+        <TextView
+            android:id="@+id/tvRecBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/badge_status"
+            android:text="● REC"
+            android:textColor="@color/status_error"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <!-- Status Badge -->
+        <TextView
+            android:id="@+id/tvBadgeStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/badge_live"
+            android:text="@string/status_live"
+            android:textColor="@color/status_live"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            tools:text="AO VIVO" />
+    </LinearLayout>
+
+    <!-- Center State (Progress / Offline / Error) -->
+    <LinearLayout
+        android:id="@+id/layoutCenterStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/focus_border" />
+
+        <TextView
+            android:id="@+id/tvCenterMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            tools:text="Conectando..." />
+    </LinearLayout>
+
+    <!-- Bottom Overlay: IP, Audio Status & Fullscreen Hint -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:gravity="center_vertical"
+        android:background="#B3000000">
+
+        <ImageView
+            android:id="@+id/ivAudioState"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_volume_off"
+            android:contentDescription="@string/audio_muted" />
+
+        <TextView
+            android:id="@+id/tvCameraIp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp"
+            tools:text="192.168.0.141" />
+
+        <TextView
+            android:id="@+id/tvCodecInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            tools:text="• HEVC" />
+
+        <ImageView
+            android:id="@+id/ivFullscreenHint"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_fullscreen"
+            android:contentDescription="Tela Cheia" />
+    </LinearLayout>
+
+</FrameLayout>

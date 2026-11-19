@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BlackView TV</string>
+    <string name="status_live">AO VIVO</string>
+    <string name="status_connecting">Conectando…</string>
+    <string name="status_reconnecting">Reconectando…</string>
+    <string name="status_offline">Sem Sinal</string>
+    <string name="status_disabled">Desativada</string>
+    <string name="audio_muted">Mudo</string>
+    <string name="audio_unmuted">Áudio Ativo</string>
+    <string name="hint_fullscreen_exit">Pressione BACK para voltar ao mosaico</string>
+    <string name="clock_date_format">EEEE, d \'de\' MMMM</string>
+</resources>

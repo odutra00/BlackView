@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background_dark">#FF0E1117</color>
+    <color name="card_background">#FF1A1E29</color>
+    <color name="card_background_disabled">#FF12151D</color>
+    
+    <!-- Accent colors -->
+    <color name="primary_accent">#FF00D2FF</color>
+    <color name="focus_border">#FF00E5FF</color>
+    <color name="focus_glow">#6600E5FF</color>
+    
+    <!-- Status colors -->
+    <color name="status_live">#FF00E676</color>
+    <color name="status_connecting">#FFFFB300</color>
+    <color name="status_error">#FFFF3D00</color>
+    <color name="status_disabled">#FF757575</color>
+    
+    <!-- Text colors -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFB0BEC5</color>
+    <color name="text_muted">#FF607D8B</color>
+    
+    <color name="overlay_scrim">#AA000000</color>
+    <color name="border_normal">#33FFFFFF</color>
+</resources>

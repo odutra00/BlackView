@@ -1,0 +1,1 @@
+Leia o arquivo app_monitorar_cameras.md. O app BlackView TV já está rodando na TV TCL com mosaico e tela cheia. Vamos continuar a partir do ADENDO 3 para implementar a reprodução das gravações de vídeo das câmeras.
