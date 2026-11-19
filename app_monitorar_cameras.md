@@ -917,5 +917,8 @@ Telas:
 - [ ] Linha do tempo por dia/hora na tela de gravações (hoje é lista cronológica).
 - [ ] Usar o substream `/onvif2` (640×360) no mosaico para reduzir decodificação; manter `/onvif1` na tela cheia e no DVR.
 - [ ] Otimização de latência na troca mosaico ↔ tela cheia.
-- [ ] Cartão micro-SD das câmeras (Abordagens A e C) — baixa prioridade com o DVR próprio funcionando.
+- [ ] **PRÓXIMA FEATURE — Reprodução das gravações do cartão micro-SD das câmeras** (ver ADENDO 3, Abordagens A e C).
+  - Bloqueio atual (18/11/2026): a única câmera com cartão SD instalado é uma das que não têm a opção NVR no firmware (câmera 2 ou 4); não há como testar agora.
+  - Observação técnica: o acesso ao SD pelo protocolo Gwell P2P (porta 50000, `getRecordFiles`/`playbackConnect`) não depende do RTSP/NVR — usa o Device ID (hostname GWIPC) e a senha do dispositivo no Yoosee. Portanto a Abordagem A pode ser viável mesmo numa câmera sem NVR; a Abordagem C (USER_CMD_SET no RTSP) exige RTSP funcional.
+  - Para testar: instalar um cartão SD numa câmera com NVR (1 ou 3) ou investigar o P2P na própria câmera sem NVR.
 - [ ] Câmeras 2 e 4.
