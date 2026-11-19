@@ -931,6 +931,12 @@ Telas:
     * Chamadas diretas `GetRecordingSummary`, `GetRecordings` e `GetReplayUri` (no device_service e em caminhos search/recording/replay_service): o servidor fecha a conexão sem resposta (curl 52 / sem HTTP). Operações normais continuam respondendo (GetServices HTTP 200).
     * GetDeviceInformation: Manufacturer "Technology", Model "IPC", Firmware 40.00.40, Hardware "Ver 2.1".
     * Conclusão: confirmado que o ONVIF desta câmera NÃO expõe as gravações do SD, com ou sem cartão.
+  - TESTE RTSP COM CARTÃO (18/11/2026, câmera 3, TV desligada e Yoosee fechado para liberar sessões; cartão ainda sem vídeos):
+    * CORREÇÃO DO ADENDO 3: os "400 Bad Request" em todos os caminhos foram erro do cliente de teste. A câmera exige que a resposta Digest seja enviada NA MESMA conexão TCP do desafio 401 (com CSeq incrementado); em conexão nova ela responde 400 — inclusive para /onvif1, que funciona.
+    * Com o cliente corrigido: DESCRIBE responde 200 para QUALQUER caminho (até /xyz123). Regra observada: caminho terminado em `onvif1` → stream principal 1080p H.265 + PCMA; qualquer outro → substream H.265 sem áudio. Parâmetros de consulta (`?starttime=...`, `?playback=1`) são ignorados. Todos os SDPs são ao vivo (`a=range:npt=0-`).
+    * Conclusão: não existe reprodução de gravações por caminho RTSP.
+    * `USER_CMD_SET` e `GET_PARAMETER` vazios: 200 OK sem corpo. `USER_CMD_SET` é aceito SEM autenticação (sem desafio 401). O formato dos comandos é desconhecido; não foi feito fuzzing para não arriscar alterar configurações da câmera.
+    * Ainda não testado (precisa de vídeos no cartão): SETUP+PLAY com `Range: clock=...` e `Require: onvif-replay` (estilo ONVIF replay).
   - Pendente com o cartão da câmera 3: (a) configurar a gravação no Yoosee e esperar haver arquivos; (b) repetir a sondagem de caminhos RTSP de replay e de `USER_CMD_SET` (Abordagem C) — exige uma sessão RTSP livre (máx. 2; fechar o app da TV durante o teste); (c) capturar o tráfego do Yoosee (PCAPdroid no celular) durante a reprodução de uma gravação do SD, para identificar o protocolo real (provável P2P Gwell na porta 50000).
   - Plano de teste sugerido: (1) mover o cartão para a câmera 1 ou 3 e repetir as sondagens ONVIF (GetServices/Profile G) e RTSP de replay; (2) se nada aparecer, capturar o tráfego do Yoosee no celular (PCAPdroid) durante a reprodução de uma gravação do SD; (3) só então implementar o P2P Gwell no app.
 - [ ] Câmeras 2 e 4.
